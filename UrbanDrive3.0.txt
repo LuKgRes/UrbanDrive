@@ -1,0 +1,111 @@
+algoritmo "Sistema_Mecanica"
+
+tipo
+   senhas = registro
+      senhaM: inteiro
+      senhaC: inteiro
+   fimregistro
+
+
+var
+   utilizador: vetor [1..2] de senhas
+   senha: vetor[1..2] de inteiro
+   i:inteiro
+   senhaM: inteiro
+   senhaC: inteiro
+   opcao: inteiro
+   mecanico: caracter
+   cliente: caracter
+   usuario: caracter
+   servicoDesejado, servicoPendente: caractere
+
+inicio
+   servicoPendente <- ""
+
+   para i de 1 ate 1 faca
+      escreval("crie sua senha cliente",i)
+      leia(utilizador[i]. senhaC)
+      escreval("crie senha mecanico", i)
+      leia(utilizador[i]. senhaM)
+   fimpara
+
+
+   //=======================================
+   Escreval("======UrbanDrive======")
+   escreval("Digite sua senha", i)
+   leia(senha[i])
+
+   //========================================
+
+   se (senha[i]) = (utilizador[i]. senhaM) então
+      escreval("bem vindo mecanico")
+   fimse
+   se (senha[i]) = (utilizador[i]. senhaM) então
+      opcao <- 0
+      enquanto opcao <> 4 faca
+         escreval("===== MENU MECÂNICO =====")
+         escreval("[1] Ver serviços pendentes")
+         escreval("[2] Atualizar status de serviço")
+         escreval("[3] Consultar peças em estoque")
+         escreval("[4] Sair da conta")
+         leia(opcao)
+         escolha opcao
+         caso 1
+            se servicoPendente <> "" entao
+               escreval("Serviço pendente: ", servicoPendente)
+            senao
+               escreval("Não há serviços pendentes no momento.")
+            fimse
+         caso 2
+            se servicoPendente <> "" entao
+               escreval("Atualizando status do serviço...")
+               servicoPendente <- ""
+               escreval("Serviço marcado como concluído.")
+            senao
+               escreval("Nenhum serviço para atualizar.")
+            fimse
+         caso 3
+            escreval("Consultando estoque de peças...")
+         caso 4
+            escreval("Saindo da conta do mecânico...")
+         outrocaso
+            escreval("Opção inválida.")
+         fimescolha
+      fimenquanto
+   fimse
+   //=======================================================
+   se (senha[i]) = (utilizador[i]. senhaC) então
+      escreval("bem vindo cliente")
+   fimse
+   se (senha[i]) = (utilizador[i]. senhaC) então
+      opcao<- 0
+      enquanto opcao <> 4 faca
+         escreval("===== MENU CLIENTE =====")
+         escreval("[1] Solicitar serviço")
+         escreval("[2] Consultar status do serviço")
+         escreval("[3] Ver preços e prazos")
+         escreval("[4] Sair da conta")
+         leia(opcao)
+         escolha opcao
+         caso 1
+            escreval("Digite o serviço que deseja solicitar:")
+            leia(servicoDesejado)
+            servicoPendente <- servicoDesejado
+            escreval("Serviço solicitado: ", servicoDesejado)
+            escreval("Sua solicitação foi registrada com sucesso!")
+         caso 2
+            se servicoPendente <> "" entao
+               escreval("Status do serviço: Em andamento.")
+            senao
+               escreval("Você não possui serviços em andamento.")
+            fimse
+         caso 3
+            escreval("Fora do ar.")
+         caso 4
+            escreval("Saindo da conta do cliente...")
+         outrocaso
+            escreval("Opção inválida.")
+         fimescolha
+      fimenquanto
+   fimse
+  fimalgoritmo
